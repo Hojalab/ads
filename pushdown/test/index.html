@@ -2,10 +2,9 @@
 <head>
 	<title>Flash Pushdown Test</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="../../common/main.css" media="screen" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script src="../common/jquery.swfobject.1-1-1.js"></script>
-	<link rel="stylesheet" href="../common/main.css" media="screen" />
-
+	<script src="../../sales.iheart.com/assets/js/jquery.swfobject.1-1-1.js"></script>
 	
 	<script>
 		var PUSHDOWN_SWF = 'test.swf',
@@ -15,6 +14,7 @@
 		window.swf = {
 			ready: function() {
 				swfReady.resolve();
+				console.log('swf.ready');
 			},
 			loaded: function(ord) {
 				console.log('Ad loaded: ' + ord);
@@ -74,7 +74,13 @@
 </head>
 
 <body>
+	<div class="mast"></div>
+	
 	<div id="wrap">
 		<div id="pushdown"></div>
+		<div id="content"></div>
+		<div id="sidebar">
+			<img src="../../common/sidebar.png" />
+		</div>
 	</div>
 </body>

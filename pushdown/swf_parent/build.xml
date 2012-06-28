@@ -1,7 +1,7 @@
 <project name="pushdown" default="compile">
 	<property file="build.properties" />
 	
-	<property name="testPath" value="../../test/pushdowns/"/>
+	<property name="testPath" value="../test/"/>
 	
 	<macrodef name="compile">
 		<attribute name="debug" default="false" />
