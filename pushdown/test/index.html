@@ -7,7 +7,8 @@
 	<script src="../../sales.iheart.com/assets/js/jquery.swfobject.1-1-1.js"></script>
 	
 	<script>
-		var PUSHDOWN_SWF = 'test.swf',
+		var autoExpand,
+			PUSHDOWN_SWF = 'test.swf',
 			ORD = 1,
 			swfReady = $.Deferred();
 		
@@ -18,6 +19,16 @@
 			},
 			loaded: function(ord) {
 				console.log('Ad loaded: ' + ord);
+				
+				if (autoExpand) {
+					setTimeout(function() {
+						$pushdown.flash(function() {
+							this.close();
+						});
+					}, 3000);
+				} else {
+					this.close();
+				}
 			},
 			error: function(ord) {
 				console.error('Ad error: ' + ord);
@@ -45,12 +56,14 @@
 		function load(url) {
 			swfReady.done(function() {
 				$pushdown.flash(function() {
-					this.load(ORD++, url, 'clickthrough.html', false);
+					this.load(ORD++, url, 'clickthrough.html', autoExpand);
 				});
 			});
 		}
 		
 		$(function() {
+			autoExpand = window.location.href.indexOf('autoExpand') > -1;
+		
 			window.$pushdown = $('#pushdown');
 			
 			$pushdown.flash({
@@ -62,6 +75,14 @@
 			});
 			
 			load(PUSHDOWN_SWF);
+			
+			$('#testNormal').click(function() {
+				window.location.href = '.';
+			});
+			
+			$('#testAutoExpand').click(function() {
+				window.location.href= '?autoExpand';
+			});
 		});
 	</script>
 	
@@ -74,7 +95,10 @@
 </head>
 
 <body>
-	<div class="mast"></div>
+	<div class="mast">
+		<input type="button" id="testNormal" value="Test Normal" />
+		<input type="button" id="testAutoExpand" value="Test Auto Expand" />
+	</div>
 	
 	<div id="wrap">
 		<div id="pushdown"></div>
