@@ -4,7 +4,7 @@ If you are looking to create a flash pushdown for iheart.com, you are in the rig
 
 ## Testing Your Pushdown
 
-If you wish to test your pushdown before submitting, check out [the test page](test).
+If you wish to test your pushdown before submitting, check out [the test page](../test).
 
 ## Good-to-knows
 
