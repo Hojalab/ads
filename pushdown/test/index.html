@@ -5,13 +5,13 @@
 	<link rel="stylesheet" href="../../common/main.css" media="screen" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="jquery.swfobject.1-1-1.js"></script>
-	
+
 	<script>
 		var autoExpand,
 			PUSHDOWN_SWF = 'test.swf',
 			ORD = 1,
 			swfReady = $.Deferred();
-		
+
 		window.swf = {
 			ready: function() {
 				swfReady.resolve();
@@ -19,7 +19,7 @@
 			},
 			loaded: function(ord) {
 				console.log('Ad loaded: ' + ord);
-				
+
 				if (autoExpand) {
 					setTimeout(function() {
 						$pushdown.flash(function() {
@@ -43,16 +43,16 @@
 					height: '90px'
 				}, duration || 500);
 			},
-			
+
 			mouseover: function() {
 				console.log('over');
 			},
-			
+
 			mouseout: function() {
 				console.log('out');
 			}
 		};
-		
+
 		function load(url) {
 			swfReady.done(function() {
 				$pushdown.flash(function() {
@@ -60,32 +60,32 @@
 				});
 			});
 		}
-		
+
 		$(function() {
 			autoExpand = window.location.href.indexOf('autoExpand') > -1;
-		
+
 			window.$pushdown = $('#pushdown');
-			
+
 			$pushdown.flash({
 				allowScriptAccess: 'always',
-				height: '100%',
+				height: '415px',
 				swf: 'pushdown.swf',
 				width: '100%',
 				wmode: 'transparent'
 			});
-			
+
 			load(PUSHDOWN_SWF);
-			
+
 			$('#testNormal').click(function() {
 				window.location.href = '.';
 			});
-			
+
 			$('#testAutoExpand').click(function() {
 				window.location.href= '?autoExpand';
 			});
 		});
 	</script>
-	
+
 	<style>
 		#pushdown {
 			width: 970px;
@@ -99,7 +99,7 @@
 		<input type="button" id="testNormal" value="Test Normal" />
 		<input type="button" id="testAutoExpand" value="Test Auto Expand" />
 	</div>
-	
+
 	<div id="wrap">
 		<div id="pushdown"></div>
 		<div id="content"></div>
